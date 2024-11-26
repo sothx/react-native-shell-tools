@@ -126,7 +126,16 @@ if (isNewArchitectureEnabled()) {
     // Since our library doesn't invoke codegen automatically we need to do it here.
     tasks.register('invokeLibraryCodegen', Exec) {
         workingDir "$rootDir/../../"
-        commandLine "npx", "bob", "build", "--target", "codegen"
+
+        // doFirst {
+        //     // 打印当前的 PATH 和 workingDir
+        //     println "Current PATH: ${System.getenv('PATH')}"
+        //     println "Working Directory: $workingDir"
+        //     println "Root Directory: $rootDir"
+        // }
+
+        // commandLine "npx", "bob", "build", "--target", "codegen"
+        commandLine "C:\\Program Files\\nodejs\\npx.cmd", "bob", "build", "--target", "codegen"
     }
     preBuild.dependsOn invokeLibraryCodegen
 }
