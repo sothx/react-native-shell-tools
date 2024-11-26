@@ -12,11 +12,20 @@ npm install react-native-shell-tools
 
 
 ```js
-import { multiply } from 'react-native-shell-tools';
+import { execCommand, execAsyncCommand } from 'react-native-shell-tools';
 
-// ...
-
-const result = multiply(3, 7);
+// 
+  // 异步用法
+  execAsyncCommand(`cat /sys/class/qcom-battery/soh`)
+    .then((res) => {
+      console.log('execAsyncCommand', res);
+    })
+    .catch((err) => {
+      console.log(err, 'execAsyncCommandErr');
+    });
+    // 同步用法
+    const batteryRes = execCommand(`cat /sys/class/qcom-battery/soh`)
+    console.log(batteryRes)
 ```
 
 
